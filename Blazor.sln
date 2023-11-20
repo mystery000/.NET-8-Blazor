@@ -5,7 +5,7 @@ VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor", "Blazor\Blazor.csproj", "{DB4DF0CB-AD13-4997-99B4-BDE184237169}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend", "Backend\Backend.csproj", "{D474AFE8-93DD-4836-9C95-57CFCAD0EB4F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LangchainAPI", "LangchainAPI\LangchainAPI.csproj", "{F6B7678F-642E-4093-BB1B-788721F6B70C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{DB4DF0CB-AD13-4997-99B4-BDE184237169}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB4DF0CB-AD13-4997-99B4-BDE184237169}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB4DF0CB-AD13-4997-99B4-BDE184237169}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D474AFE8-93DD-4836-9C95-57CFCAD0EB4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D474AFE8-93DD-4836-9C95-57CFCAD0EB4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D474AFE8-93DD-4836-9C95-57CFCAD0EB4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D474AFE8-93DD-4836-9C95-57CFCAD0EB4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6B7678F-642E-4093-BB1B-788721F6B70C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6B7678F-642E-4093-BB1B-788721F6B70C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6B7678F-642E-4093-BB1B-788721F6B70C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6B7678F-642E-4093-BB1B-788721F6B70C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

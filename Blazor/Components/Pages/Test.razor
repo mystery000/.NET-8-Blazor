@@ -34,7 +34,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         var request = new HttpRequestMessage(HttpMethod.Get,
-            "https://localhost:7165/WeatherForecast");
+            "https://localhost:7015/WeatherForecast");
         request.Headers.Add("Accept", "application/json");
         request.Headers.Add("User-Agent", "HttpClientFactory-Sample");
 

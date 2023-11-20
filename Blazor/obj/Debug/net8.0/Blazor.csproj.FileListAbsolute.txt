@@ -1,5 +1,6 @@
 C:\Users\K\source\repos\Blazor\Blazor\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\K\source\repos\Blazor\Blazor\bin\Debug\net8.0\appsettings.json
+C:\Users\K\source\repos\Blazor\Blazor\bin\Debug\net8.0\libman.json
 C:\Users\K\source\repos\Blazor\Blazor\bin\Debug\net8.0\Blazor.staticwebassets.runtime.json
 C:\Users\K\source\repos\Blazor\Blazor\bin\Debug\net8.0\Blazor.exe
 C:\Users\K\source\repos\Blazor\Blazor\bin\Debug\net8.0\Blazor.deps.json
@@ -20,6 +21,7 @@ C:\Users\K\source\repos\Blazor\Blazor\obj\Debug\net8.0\Blazor.AssemblyInfo.cs
 C:\Users\K\source\repos\Blazor\Blazor\obj\Debug\net8.0\Blazor.csproj.CoreCompileInputs.cache
 C:\Users\K\source\repos\Blazor\Blazor\obj\Debug\net8.0\Blazor.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\K\source\repos\Blazor\Blazor\obj\Debug\net8.0\Blazor.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\K\source\repos\Blazor\Blazor\obj\Debug\net8.0\Blazor.sourcelink.json
 C:\Users\K\source\repos\Blazor\Blazor\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\K\source\repos\Blazor\Blazor\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\K\source\repos\Blazor\Blazor\obj\Debug\net8.0\staticwebassets\msbuild.Blazor.Microsoft.AspNetCore.StaticWebAssets.props
@@ -37,4 +39,3 @@ C:\Users\K\source\repos\Blazor\Blazor\obj\Debug\net8.0\refint\Blazor.dll
 C:\Users\K\source\repos\Blazor\Blazor\obj\Debug\net8.0\Blazor.pdb
 C:\Users\K\source\repos\Blazor\Blazor\obj\Debug\net8.0\Blazor.genruntimeconfig.cache
 C:\Users\K\source\repos\Blazor\Blazor\obj\Debug\net8.0\ref\Blazor.dll
-C:\Users\K\source\repos\Blazor\Blazor\bin\Debug\net8.0\libman.json
