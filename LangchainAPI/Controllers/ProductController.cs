@@ -1,7 +1,9 @@
 ﻿using LangchainAPI.Helpers;
 using LangchainAPI.Models;
+using LangChainJSDotNet;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Python.Runtime;
 
 namespace LangchainAPI.Controllers
 {
@@ -16,11 +18,40 @@ namespace LangchainAPI.Controllers
             _productContext = productContext;
         }
 
-        [HttpGet]
-        public async Task<String> Test()
+        [HttpGet("{query}")]
+        public async Task<ActionResult<string>> Search(string query)
         {
-            await Task.Delay(500);
-            return "Langchain Integration Test";
+            
+            object response = PythonInterop.RunPythonCodeAndReturn(
+ @"from langchain import OpenAI, SQLDatabase, SQLDatabaseChain
+import sys
+API_KEY = ""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""
+# Setup database
+db = SQLDatabase.from_uri(
+    f""postgresql+psycopg2://postgres:postgres@localhost:5432/products"",
+)
+# setup llm
+llm = OpenAI(temperature=0, openai_api_key=API_KEY)
+
+# Create db chain
+QUERY = """"""
+Given an input question, first create a syntactically correct postgresql query to run, then look at the results of the query and return the answer.
+Use the following format:
+
+Question: Question here
+SQLQuery: SQL Query to run
+SQLResult: Result of the SQLQuery
+Answer: Final answer here
+
+{question}
+""""""
+# Setup the database chain
+db_chain = SQLDatabaseChain(llm=llm, database=db, verbose=True)
+prompt = query
+question = QUERY.format(question=prompt)
+response = db_chain.run(question)
+", query, "query", "response");
+            return response.ToString();
         }
 
         [HttpGet]
@@ -103,6 +134,10 @@ namespace LangchainAPI.Controllers
             await _productContext.SaveChangesAsync();
             return NoContent();
         }
+
+
+
+     
 
     }
 }
