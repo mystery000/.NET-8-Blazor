@@ -1,89 +1,69 @@
 ﻿@page "/assistant"
 @attribute [StreamRendering]
-@using System.Text.Json
-@using System.Text.Json.Serialization
+@rendermode InteractiveServer
 @inject IHttpClientFactory ClientFactory
 
 <h1>Assistant</h1>
 
-@if (getBranchesError)
+@if (getRequestError)
 {
     <p>Unable to get forcast from backend. Please try again later.</p>
 }
-else if (products == null)
-{
-    <p><em>Loading...</em></p>
-}
 else
 {
-    <table class="table caption-top table-hover">
-        <caption>List of products</caption>
-        <thead>
-            <tr>
-                <th scope="col">No</th>
-                <th scope="col">Title</th>
-                <th scope="col">Description</th>
-                <th scope="col">Category</th>
-                <th scope="col">CreatedDate</th>
-            </tr>
-        </thead>
-        <tbody>
-            
-            @foreach (var product in products)
-            {
-                <tr>
-                    <th scope="row">@product.Id</th>
-                    <td>@product.Title</td>
-                    <td>@product.Description</td>
-                    <td>@product.Category</td>
-                    <td>@product.CreatedDate.ToLocalTime()</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <form class="row g-3" @onsubmit="Submit" method="post" @formname="queryForm">
+        <div class="form-floating" >
+            <AntiforgeryToken />
+            <InputTextArea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"  @bind-Value="query" />
+            <label for="floatingTextarea2">Question</label>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3">Submit</button>
+        </div>
+    </form>
+
+    <div>
+        Answer: @answer
+    </div>
+
 }
 
 @code {
-    private IEnumerable<Product>? products;
-    private bool getBranchesError;
+    [SupplyParameterFromForm]
+    public string? query { get; set; }
+
+    private string? answer = String.Empty;
+
+    private bool getRequestError;
+
+    private bool loading;
+
     private bool shouldRender;
 
     protected override bool ShouldRender() => shouldRender;
 
-    protected override async Task OnInitializedAsync()
+    private void Submit()
     {
         var request = new HttpRequestMessage(HttpMethod.Get,
-            "https://localhost:7015/api/Product/GetProducts");
+       $"https://localhost:7015/api/Product/Search/{query}");
+
         request.Headers.Add("Accept", "application/json");
         request.Headers.Add("User-Agent", "HttpClientFactory-Sample");
 
         var client = ClientFactory.CreateClient();
 
-        var response = await client.SendAsync(request);
+        var response = client.SendAsync(request).Result;
 
         if (response.IsSuccessStatusCode)
         {
-            products = await response.Content.ReadAsAsync<IEnumerable<Product>>();
-            
+            answer = response.Content.ReadAsStringAsync().Result;
+            query = "";
         }
         else
         {
-            getBranchesError = true;
+            getRequestError = true;
         }
 
         shouldRender = true;
-    }
-
-    public class Product
-    {
-        public int Id { get; set; }
-
-        public string? Title { get; set; }
-
-        public string? Description { get; set; }
-
-        public string? Category { get; set; }
-
-        public DateTime CreatedDate { get; set; } = DateTime.Now;
     }
 }

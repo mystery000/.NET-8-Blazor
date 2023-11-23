@@ -1,9 +1,7 @@
 ﻿using LangchainAPI.Helpers;
 using LangchainAPI.Models;
-using LangChainJSDotNet;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Python.Runtime;
 
 namespace LangchainAPI.Controllers
 {
@@ -21,11 +19,9 @@ namespace LangchainAPI.Controllers
         [HttpGet("{query}")]
         public async Task<ActionResult<string>> Search(string query)
         {
-            
             object response = PythonInterop.RunPythonCodeAndReturn(
  @"from langchain import OpenAI, SQLDatabase, SQLDatabaseChain
-import sys
-API_KEY = ""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""
+API_KEY = """"
 # Setup database
 db = SQLDatabase.from_uri(
     f""postgresql+psycopg2://postgres:postgres@localhost:5432/products"",

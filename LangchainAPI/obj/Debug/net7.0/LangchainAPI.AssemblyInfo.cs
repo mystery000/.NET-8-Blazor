@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LangchainAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+59c179cb4dd1ed1e1cbbaada0655b6bbddc58ce1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+388e79dc80ab70344c69fd5db78ccca8bcee2592")]
 [assembly: System.Reflection.AssemblyProductAttribute("LangchainAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LangchainAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
