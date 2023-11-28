@@ -1,2 +1,7 @@
 FileContentIndex
 .vs
+Blazor/bin
+Blazor/obj
+LangchainAPI/bin
+LangchainAPI/obj
+LangchainAPI/Migrations

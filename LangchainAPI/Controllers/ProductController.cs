@@ -21,7 +21,7 @@ namespace LangchainAPI.Controllers
         {
             object response = PythonInterop.RunPythonCodeAndReturn(
  @"from langchain import OpenAI, SQLDatabase, SQLDatabaseChain
-API_KEY = """"
+API_KEY = ""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""
 # Setup database
 db = SQLDatabase.from_uri(
     f""postgresql+psycopg2://postgres:postgres@localhost:5432/products"",
