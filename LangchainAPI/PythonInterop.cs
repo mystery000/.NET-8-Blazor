@@ -8,12 +8,12 @@ namespace LangchainAPI
         {
             if (!PythonEngine.IsInitialized)
             {
-                string pythonDll = @"C:\python\python310.dll";
+                /*string pythonDll = @"C:\python\python310.dll";*/
+                string pythonDll = @"C:\python312\python312.dll";
                 Environment.SetEnvironmentVariable("PYTHONNET_PYDLL", pythonDll);
                 PythonEngine.Initialize();
                 PythonEngine.BeginAllowThreads();
             }
-
         }
 
         public static void RunPythonCode(string pycode)

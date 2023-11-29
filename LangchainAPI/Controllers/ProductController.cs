@@ -20,12 +20,19 @@ namespace LangchainAPI.Controllers
         public async Task<ActionResult<string>> Search(string query)
         {
             object response = PythonInterop.RunPythonCodeAndReturn(
- @"from langchain import OpenAI, SQLDatabase, SQLDatabaseChain
+ @"from langchain.agents import create_sql_agent
+from langchain.agents.agent_toolkits import SQLDatabaseToolkit
+from langchain.agents.agent_types import AgentType
+from langchain.llms.openai import OpenAI
+from langchain.sql_database import SQLDatabase
+
 API_KEY = ""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""
+
 # Setup database
 db = SQLDatabase.from_uri(
     f""postgresql+psycopg2://postgres:postgres@localhost:5432/products"",
 )
+
 # setup llm
 llm = OpenAI(temperature=0, openai_api_key=API_KEY)
 
@@ -41,11 +48,14 @@ Answer: Final answer here
 
 {question}
 """"""
+
+toolkit = SQLDatabaseToolkit(db=db, llm=llm)
+
 # Setup the database chain
-db_chain = SQLDatabaseChain(llm=llm, database=db, verbose=True)
+agent_executor = create_sql_agent(llm=llm, verbose=True, toolkit=toolkit, agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION)
 prompt = query
 question = QUERY.format(question=prompt)
-response = db_chain.run(question)
+response = agent_executor.run(question)
 ", query, "query", "response");
             return response.ToString();
         }
