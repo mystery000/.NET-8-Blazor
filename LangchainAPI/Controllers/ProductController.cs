@@ -38,7 +38,12 @@ llm = OpenAI(temperature=0, openai_api_key=API_KEY)
 
 # Create db chain
 QUERY = """"""
-Given an input question, first create a syntactically correct postgresql query to run, then look at the results of the query and return the answer.
+Given an input question, first create a syntactically correct SQL query to run, then look at the results of the query and return the answer.
+
+Never run Delete, Update and Create queries. In these cases, please answer 'This query is not allowed.'
+
+The SQL query should be outputted plainly, do not surround it in quotes or anything else.
+
 Use the following format:
 
 Question: Question here
