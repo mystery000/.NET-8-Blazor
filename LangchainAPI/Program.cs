@@ -18,7 +18,8 @@ namespace LangchainAPI
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddDbContextPool<ProductContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQLServerConnection")));
+            /*builder.Services.AddDbContextPool<ProductContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQLServerConnection")));*/
+            builder.Services.AddDbContext<ProductContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MSSQLServerConnection")));
 
             var app = builder.Build();
 

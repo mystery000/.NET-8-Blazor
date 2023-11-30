@@ -141,9 +141,5 @@ response = agent_executor.run(question)
             return NoContent();
         }
 
-
-
-     
-
     }
 }
