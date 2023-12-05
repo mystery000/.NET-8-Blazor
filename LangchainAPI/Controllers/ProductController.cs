@@ -30,7 +30,7 @@ API_KEY = ""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""
 
 # Setup database
 db = SQLDatabase.from_uri(
-    f""postgresql+psycopg2://postgres:postgres@localhost:5432/products"",
+    f""mssql+pyodbc://(localdb)\MSSQLLocalDB/Products?driver=ODBC+Driver+17+for+SQL+Server"",
 )
 
 # setup llm
